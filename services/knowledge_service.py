@@ -26,6 +26,25 @@ class KnowledgetService:
         for note in self.notes: 
             if note.id == note_id: 
                 return note 
-    
+        return None 
+        
     def list_notes(self): 
         return self.notes
+    
+    def add_tag_to_note(self, note_id, tag): 
+        note = self.get_note(note_id) 
+        
+        if note: 
+            note.add_tag(tag)
+            self.storage.save_notes()
+                
+    def remove_tag_from_note(self, note_id, tag): 
+        note = self.get_note(note_id)
+        
+        if note: 
+            if tag in note.tags: 
+                note.tags.remove(tag)
+                self.storage.save_notes()
+                    
+    def filter_by_tag(self, tag): 
+        return [note for note in self.notes if tag in note.tags] 
