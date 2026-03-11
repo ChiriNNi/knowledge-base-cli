@@ -18,9 +18,7 @@ class Storage:
             self.notes = []
             return self.notes 
         
-    def save_notes(self, note: Note): 
-        self.notes.append(note)
-        
+    def save_notes(self): 
         os.makedirs(os.path.dirname(self.file_path), exist_ok=True)
         
         with open(self.file_path, "w", encoding="utf-8") as file: 

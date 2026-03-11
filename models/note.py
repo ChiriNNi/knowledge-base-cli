@@ -59,5 +59,9 @@ class Note:
         return f"Note(id={self.id}, title={self.title!r}, content={self.content!r}, \
                 tags={self.tags}, rating={self.rating}, created_at={self.created_at}, updated_at={self.updated_at})"
                 
-    
+    def __eq__(self, other):
+        if not isinstance(other, Note): 
+            return NotImplemented
+        
+        return self.id == other.id 
     
