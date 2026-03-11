@@ -1,7 +1,7 @@
 from storage.storage_manager import Storage
 from models.note import Note
 
-class KnowledgetService:     
+class KnowledgeService:     
     def __init__(self): 
         self.storage = Storage()
         self.notes = self.storage.load_notes()
